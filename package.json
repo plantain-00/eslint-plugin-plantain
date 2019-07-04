@@ -2,7 +2,7 @@
   "name": "typescript-eslint-rules",
   "version": "0.0.1",
   "description": "A set of unofficial typescript-eslint rules.",
-  "main": "nodejs/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "clean-scripts build",
     "lint": "clean-scripts lint",
@@ -23,7 +23,9 @@
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",
     "@types/jasmine": "3.3.13",
+    "@typescript-eslint/parser": "^1.9.0",
     "clean-scripts": "1.11.2",
+    "eslint": "^5.0.0",
     "jasmine": "3.4.0",
     "markdownlint-cli": "0.17.0",
     "no-unused-export": "1.9.0",
@@ -32,14 +34,15 @@
     "tslint": "5.18.0",
     "tslint-config-standard": "8.0.1",
     "tslint-sonarts": "1.9.0",
-    "type-coverage": "2.0.4",
-    "typescript": "3.5.2"
+    "type-coverage": "2.0.4"
   },
-  "module": "browser/index.js",
-  "unpkg": "typescript-eslint-rules.min.js",
-  "jsdelivr": "typescript-eslint-rules.min.js",
-  "types": "nodejs/index.d.ts",
   "typeCoverage": {
-    "atLeast": 97
+    "atLeast": 100
+  },
+  "dependencies": {
+    "@typescript-eslint/experimental-utils": "^1.11.0"
+  },
+  "peerDependencies": {
+    "typescript": "^3.5.2"
   }
 }

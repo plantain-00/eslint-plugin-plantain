@@ -1,5 +1,1 @@
-/**
- * @public
- */
-export default class TypescriptEslintRules {
-}
+export * from './rules/promise-not-await'
