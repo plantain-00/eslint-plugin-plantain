@@ -5,6 +5,25 @@ import { createRule, getParserServices } from '../utils'
 
 type MessageIds = 'missingAsync'
 
+function findParentFunction(node: ts.Node): ts.Node | undefined {
+  const parent = node.parent
+  if (ts.isFunctionDeclaration(parent)
+    || ts.isFunctionExpression(parent)
+    || ts.isArrowFunction(parent)
+    || ts.isMethodDeclaration(parent)) {
+    return parent
+  }
+  if (ts.isSourceFile(parent)) {
+    return undefined
+  }
+  return findParentFunction(parent)
+}
+
+function findFunction(node: ts.Node) {
+  // tslint:disable-next-line:max-union-size
+  return findParentFunction(node) as ts.FunctionDeclaration | ts.FunctionExpression | ts.ArrowFunction | ts.MethodDeclaration | undefined
+}
+
 export default createRule<[], MessageIds>({
   name: 'promise-not-await',
   meta: {
@@ -46,9 +65,7 @@ export default createRule<[], MessageIds>({
     }
 
     return {
-      'CallExpression'(
-        node: TSESTree.CallExpression
-      ) {
+      'CallExpression'(node: TSESTree.CallExpression) {
         const originalNode = parserServices.esTreeNodeToTSNodeMap.get(node)
         if (ts.isReturnStatement(originalNode.parent) || ts.isAwaitExpression(originalNode.parent)) {
           return
@@ -64,22 +81,3 @@ export default createRule<[], MessageIds>({
     }
   }
 })
-
-function findFunction(node: ts.Node) {
-  // tslint:disable-next-line:max-union-size
-  return findParentFunction(node) as ts.FunctionDeclaration | ts.FunctionExpression | ts.ArrowFunction | ts.MethodDeclaration | undefined
-}
-
-function findParentFunction(node: ts.Node): ts.Node | undefined {
-  const parent = node.parent
-  if (ts.isFunctionDeclaration(parent)
-    || ts.isFunctionExpression(parent)
-    || ts.isArrowFunction(parent)
-    || ts.isMethodDeclaration(parent)) {
-    return parent
-  }
-  if (ts.isSourceFile(parent)) {
-    return undefined
-  }
-  return findParentFunction(parent)
-}

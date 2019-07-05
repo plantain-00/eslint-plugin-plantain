@@ -7,7 +7,7 @@ module.exports = {
     'tsc -p src/tsconfig.json'
   ],
   lint: {
-    ts: `tslint ${tsFiles}`,
+    ts: `eslint --ext .js,.ts ${tsFiles}`,
     js: `standard ${jsFiles}`,
     export: `no-unused-export ${tsFiles} --strict`,
     commit: `commitlint --from=HEAD~1`,
