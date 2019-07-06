@@ -1,4 +1,3 @@
-import { TSESTree } from '@typescript-eslint/experimental-utils'
 import ts from 'typescript'
 
 import { createRule, getParserServices } from '../utils'
@@ -45,7 +44,7 @@ export default createRule<[], MessageIds>({
     const checker = parserServices.program.getTypeChecker()
 
     function checkTypeIsPromise(
-      node: ts.IfStatement | ts.WhileStatement | ts.CallExpression,
+      node: ts.IfStatement | ts.WhileStatement | ts.CallExpression | ts.Identifier,
       type: ts.Type
     ) {
       if (type.symbol && type.symbol.escapedName === 'Promise') {
@@ -65,7 +64,7 @@ export default createRule<[], MessageIds>({
     }
 
     return {
-      'CallExpression'(node: TSESTree.CallExpression) {
+      CallExpression(node) {
         const originalNode = parserServices.esTreeNodeToTSNodeMap.get(node)
         if (ts.isReturnStatement(originalNode.parent) || ts.isAwaitExpression(originalNode.parent)) {
           return
@@ -77,6 +76,24 @@ export default createRule<[], MessageIds>({
         }
 
         checkCallExpressionReturnPromise(originalNode as ts.CallExpression)
+      },
+      IfStatement(node) {
+        const originalNode: ts.IfStatement = parserServices.esTreeNodeToTSNodeMap.get(node)
+        if (ts.isCallExpression(originalNode.expression)) {
+          checkCallExpressionReturnPromise(originalNode.expression)
+        } else if (ts.isIdentifier(originalNode.expression)) {
+          const type = checker.getTypeAtLocation(originalNode.expression)
+          checkTypeIsPromise(originalNode.expression, type)
+        }
+      },
+      WhileStatement(node) {
+        const originalNode: ts.WhileStatement = parserServices.esTreeNodeToTSNodeMap.get(node)
+        if (ts.isCallExpression(originalNode.expression)) {
+          checkCallExpressionReturnPromise(originalNode.expression)
+        } else if (ts.isIdentifier(originalNode.expression)) {
+          const type = checker.getTypeAtLocation(originalNode.expression)
+          checkTypeIsPromise(originalNode.expression, type)
+        }
       }
     }
   }

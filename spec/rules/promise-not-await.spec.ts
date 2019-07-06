@@ -17,18 +17,12 @@ ruleTester.run('promise-not-await', rule, {
   valid: [
     `
     async function foo() {
-      await bar()
+      await Promise.resolve(1)
       return 1
-    }
-    function bar() {
-      return Promise.resolve(1)
     }
     `,
     `
     async function foo() {
-      return bar()
-    }
-    function bar() {
       return Promise.resolve(1)
     }
     `
@@ -37,11 +31,8 @@ ruleTester.run('promise-not-await', rule, {
     {
       code: `
       async function foo() {
-        bar()
+        Promise.resolve(1)
         return 1
-      }
-      function bar() {
-        return Promise.resolve(1)
       }
       `,
       errors: [
@@ -53,11 +44,46 @@ ruleTester.run('promise-not-await', rule, {
     {
       code: `
       function foo() {
-        bar()
+        Promise.resolve(1)
         return 1
       }
-      function bar() {
-        return Promise.resolve(1)
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
+    },
+    {
+      code: `
+      if (Promise.resolve(1)) {
+        console.info(1)
+      }
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
+    },
+    {
+      code: `
+      const b = Promise.resolve(1)
+      if (b) {
+        console.info(2)
+      }
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
+    },
+    {
+      code: `
+      const b = Promise.resolve(1)
+      while (b) {
+        console.info(2)
       }
       `,
       errors: [
