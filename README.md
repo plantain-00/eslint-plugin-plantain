@@ -17,7 +17,16 @@ A set of unofficial typescript-eslint rules.
 
 ## usage
 
-```ts
-import TypescriptEslintRules from "eslint-plugin-plantain";
-// <script src="./node_modules/eslint-plugin-plantain/eslint-plugin-plantain.min.js"></script>
+```js
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "plantain"
+  ],
+  "rules": {
+    "plantain/promise-not-await": "error"
+  }
+}
 ```
