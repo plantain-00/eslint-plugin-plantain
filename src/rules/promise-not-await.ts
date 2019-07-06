@@ -3,7 +3,7 @@ import ts from 'typescript'
 
 import { createRule, getParserServices } from '../utils'
 
-type MessageIds = 'missingAsync'
+type MessageIds = 'promiseNotAwait'
 
 function findParentFunction(node: ts.Node): ts.Node | undefined {
   const parent = node.parent
@@ -30,12 +30,12 @@ export default createRule<[], MessageIds>({
     type: 'suggestion',
     docs: {
       description:
-        'Requires any function or method that returns a Promise to be marked async',
+        'Requires any statement that returns a Promise to be await',
       category: 'Best Practices',
       recommended: false
     },
     messages: {
-      missingAsync: 'Functions that return promises must be async.'
+      promiseNotAwait: 'Statements that return promises must be await.'
     },
     schema: []
   },
@@ -50,7 +50,7 @@ export default createRule<[], MessageIds>({
     ) {
       if (type.symbol && type.symbol.escapedName === 'Promise') {
         context.report({
-          messageId: 'missingAsync',
+          messageId: 'promiseNotAwait',
           node: parserServices.tsNodeToESTreeNodeMap.get(node)
         })
       }
@@ -72,7 +72,7 @@ export default createRule<[], MessageIds>({
         }
 
         const functionNode = findFunction(originalNode)
-        if (!functionNode || !functionNode.modifiers || functionNode.modifiers.every((m) => m.kind !== ts.SyntaxKind.AsyncKeyword)) {
+        if (!functionNode) {
           return
         }
 

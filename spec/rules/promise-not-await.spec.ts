@@ -2,7 +2,7 @@ import { TSESLint } from '@typescript-eslint/experimental-utils'
 
 import rule from '../../dist/rules/promise-not-await'
 
-const messageId = 'missingAsync'
+const messageId = 'promiseNotAwait'
 
 const ruleTester = new TSESLint.RuleTester({
   parserOptions: {
@@ -13,7 +13,7 @@ const ruleTester = new TSESLint.RuleTester({
   parser: '@typescript-eslint/parser'
 })
 
-ruleTester.run('promise-function-async', rule, {
+ruleTester.run('promise-not-await', rule, {
   valid: [
     `
     async function foo() {
@@ -37,6 +37,22 @@ ruleTester.run('promise-function-async', rule, {
     {
       code: `
       async function foo() {
+        bar()
+        return 1
+      }
+      function bar() {
+        return Promise.resolve(1)
+      }
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
+    },
+    {
+      code: `
+      function foo() {
         bar()
         return 1
       }
