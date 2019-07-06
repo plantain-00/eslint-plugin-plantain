@@ -1,7 +1,7 @@
 import { ESLintUtils, TSESLint, ParserServices } from '@typescript-eslint/experimental-utils'
 
 export const createRule = ESLintUtils.RuleCreator(
-  () => `https://github.com/plantain-00/typescript-eslint-rules#readme`
+  () => `https://github.com/plantain-00/eslint-plugin-plantain-00#readme`
 )
 
 type RequiredParserServices = {
