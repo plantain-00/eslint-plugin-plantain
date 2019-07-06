@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-plantain-00",
+  "name": "eslint-plugin-plantain",
   "version": "0.0.1",
   "description": "A set of unofficial typescript-eslint rules.",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plantain-00/eslint-plugin-plantain-00.git"
+    "url": "git+https://github.com/plantain-00/eslint-plugin-plantain.git"
   },
   "author": "York Yao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/plantain-00/eslint-plugin-plantain-00/issues"
+    "url": "https://github.com/plantain-00/eslint-plugin-plantain/issues"
   },
-  "homepage": "https://github.com/plantain-00/eslint-plugin-plantain-00#readme",
+  "homepage": "https://github.com/plantain-00/eslint-plugin-plantain#readme",
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",
