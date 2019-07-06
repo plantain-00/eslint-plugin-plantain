@@ -91,6 +91,32 @@ ruleTester.run('promise-not-await', rule, {
           messageId
         }
       ]
+    },
+    {
+      code: `
+      const b = Promise.resolve(1)
+      while (b && true) {
+        console.info(2)
+      }
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
+    },
+    {
+      code: `
+      const b = Promise.resolve(1)
+      while (!b) {
+        console.info(2)
+      }
+      `,
+      errors: [
+        {
+          messageId
+        }
+      ]
     }
   ]
 })

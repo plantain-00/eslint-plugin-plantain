@@ -1,4 +1,5 @@
 import ts from 'typescript'
+import { TSESTree } from '@typescript-eslint/experimental-utils'
 
 import { createRule, getParserServices } from '../utils'
 
@@ -63,6 +64,25 @@ export default createRule<[], MessageIds>({
       }
     }
 
+    function checkExpressionReturnPromise(node: ts.Node) {
+      if (ts.isCallExpression(node)) {
+        checkCallExpressionReturnPromise(node)
+      } else if (ts.isIdentifier(node)) {
+        const type = checker.getTypeAtLocation(node)
+        checkTypeIsPromise(node, type)
+      } else if (ts.isBinaryExpression(node)) {
+        checkExpressionReturnPromise(node.left)
+        checkExpressionReturnPromise(node.right)
+      } else if (ts.isPrefixUnaryExpression(node)) {
+        checkExpressionReturnPromise(node.operand)
+      }
+    }
+
+    function checkIFWhileStatementConditionReturnPromise(node: TSESTree.IfStatement | TSESTree.WhileStatement) {
+      const originalNode: ts.IfStatement | ts.WhileStatement = parserServices.esTreeNodeToTSNodeMap.get(node)
+      checkExpressionReturnPromise(originalNode.expression)
+    }
+
     return {
       CallExpression(node) {
         const originalNode = parserServices.esTreeNodeToTSNodeMap.get(node)
@@ -78,22 +98,10 @@ export default createRule<[], MessageIds>({
         checkCallExpressionReturnPromise(originalNode as ts.CallExpression)
       },
       IfStatement(node) {
-        const originalNode: ts.IfStatement = parserServices.esTreeNodeToTSNodeMap.get(node)
-        if (ts.isCallExpression(originalNode.expression)) {
-          checkCallExpressionReturnPromise(originalNode.expression)
-        } else if (ts.isIdentifier(originalNode.expression)) {
-          const type = checker.getTypeAtLocation(originalNode.expression)
-          checkTypeIsPromise(originalNode.expression, type)
-        }
+        checkIFWhileStatementConditionReturnPromise(node)
       },
       WhileStatement(node) {
-        const originalNode: ts.WhileStatement = parserServices.esTreeNodeToTSNodeMap.get(node)
-        if (ts.isCallExpression(originalNode.expression)) {
-          checkCallExpressionReturnPromise(originalNode.expression)
-        } else if (ts.isIdentifier(originalNode.expression)) {
-          const type = checker.getTypeAtLocation(originalNode.expression)
-          checkTypeIsPromise(originalNode.expression, type)
-        }
+        checkIFWhileStatementConditionReturnPromise(node)
       }
     }
   }
