@@ -91,7 +91,7 @@ export default createRule<[], MessageIds>({
         }
 
         const functionNode = findFunction(originalNode)
-        if (!functionNode) {
+        if (!functionNode || !functionNode.body || !ts.isBlock(functionNode.body)) {
           return
         }
 
