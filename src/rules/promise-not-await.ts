@@ -94,6 +94,15 @@ export default createRule<[], MessageIds>({
         if (!functionNode || !functionNode.body || !ts.isBlock(functionNode.body)) {
           return
         }
+        if (!functionNode.modifiers || functionNode.modifiers.every((m) => m.kind !== ts.SyntaxKind.AsyncKeyword)) {
+          const signature = checker.getSignatureFromDeclaration(functionNode)
+          if (signature) {
+            const returnType = checker.getReturnTypeOfSignature(signature)
+            if (returnType.flags === ts.TypeFlags.Void) {
+              return
+            }
+          }
+        }
 
         checkCallExpressionReturnPromise(originalNode as ts.CallExpression)
       },

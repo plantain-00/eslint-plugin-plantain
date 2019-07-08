@@ -28,7 +28,12 @@ ruleTester.run('promise-not-await', rule, {
     `,
     `
     const foo = () => Promise.resolve(1)
+    `,
     `
+    function foo() {
+      Promise.resolve(1)
+    }
+    `,
   ],
   invalid: [
     {
