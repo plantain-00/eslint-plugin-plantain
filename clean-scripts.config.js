@@ -15,7 +15,7 @@ module.exports = {
   },
   test: [
     'tsc -p spec',
-    'jasmine'
+    // 'jasmine'
   ],
   fix: `eslint --ext .js,.ts --fix ${tsFiles} ${jsFiles}`
 }

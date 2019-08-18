@@ -20,7 +20,6 @@ function findParentFunction(node: ts.Node): ts.Node | undefined {
 }
 
 function findFunction(node: ts.Node) {
-  // tslint:disable-next-line:max-union-size
   return findParentFunction(node) as ts.FunctionDeclaration | ts.FunctionExpression | ts.ArrowFunction | ts.MethodDeclaration | undefined
 }
 

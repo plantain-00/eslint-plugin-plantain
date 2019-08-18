@@ -8,9 +8,9 @@ const ruleTester = new TSESLint.RuleTester({
   parserOptions: {
     ecmaVersion: 2018,
     tsconfigRootDir: './src',
-    project: './tsconfig.json'
+    project: './tsconfig.eslint.json'
   },
-  parser: '@typescript-eslint/parser'
+  parser: require.resolve('@typescript-eslint/parser')
 })
 
 ruleTester.run('promise-not-await', rule, {
