@@ -26,7 +26,8 @@ A set of unofficial typescript-eslint rules.
     "plantain"
   ],
   "rules": {
-    "plantain/promise-not-await": "error"
+    "plantain/promise-not-await": "error",
+    "plantain/only-import-type-allowed": "error"
   }
 }
 ```
