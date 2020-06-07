@@ -1,7 +1,7 @@
 const tsFiles = `"src/**/*.ts" "spec/**/*.ts"`
 const jsFiles = `"*.config.js"`
 
-module.exports = {
+export default {
   build: [
     'rimraf dist/',
     'tsc -p src/tsconfig.json'
@@ -14,8 +14,6 @@ module.exports = {
     typeCoverage: 'type-coverage -p src/tsconfig.json --strict'
   },
   test: [
-    'tsc -p spec',
-    // 'jasmine'
   ],
   fix: `eslint --ext .js,.ts --fix ${tsFiles} ${jsFiles}`
 }
