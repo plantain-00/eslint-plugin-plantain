@@ -9,7 +9,6 @@ export default {
   lint: {
     ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
     export: `no-unused-export ${tsFiles} --strict`,
-    commit: `commitlint --from=HEAD~1`,
     markdown: `markdownlint README.md`,
     typeCoverage: 'type-coverage -p src/tsconfig.json --strict'
   },
