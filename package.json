@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/plantain-00/eslint-plugin-plantain#readme",
   "devDependencies": {
-    "@types/node": "14.0.22",
-    "@typescript-eslint/eslint-plugin": "3.6.0",
-    "@typescript-eslint/parser": "3.6.0",
+    "@types/node": "14.0.23",
+    "@typescript-eslint/eslint-plugin": "3.6.1",
+    "@typescript-eslint/parser": "3.6.1",
     "clean-scripts": "1.16.1",
     "eslint": "7.4.0",
     "eslint-config-prettier": "6.11.0",
@@ -31,7 +31,7 @@
     "rimraf": "3.0.2",
     "ts-node": "8.10.2",
     "tsconfig-plantain": "0.0.1",
-    "type-coverage": "2.8.4"
+    "type-coverage": "2.9.0"
   },
   "typeCoverage": {
     "atLeast": 99.09
