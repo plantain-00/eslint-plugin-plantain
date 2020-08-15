@@ -1,7 +1,7 @@
 import ts from 'typescript'
-import { TSESTree } from '@typescript-eslint/experimental-utils'
+import { TSESTree, ESLintUtils } from '@typescript-eslint/experimental-utils'
 
-import { createRule, getParserServices } from '../utils'
+import { createRule } from '../utils'
 
 type MessageIds = 'promiseNotAwait'
 
@@ -40,7 +40,7 @@ export default createRule<[], MessageIds>({
   },
   defaultOptions: [],
   create(context) {
-    const parserServices = getParserServices(context)
+    const parserServices = ESLintUtils.getParserServices(context)
     const checker = parserServices.program.getTypeChecker()
 
     function checkTypeIsPromise(
