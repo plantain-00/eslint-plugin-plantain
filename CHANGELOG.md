@@ -1,5 +1,18 @@
 # Change Log
 
+## [1.1.0](https://github.com/plantain-00/eslint-plugin-plantain/compare/v1.0.0...v1.1.0) (2020-08-21)
+  
+* feat: support typescript 4 ([aa3add1](https://github.com/plantain-00/eslint-plugin-plantain/commit/aa3add13df9aebdf042c84c8f5bbded45236a3c3))
+* chore: update dependencies ([9575d1d](https://github.com/plantain-00/eslint-plugin-plantain/commit/9575d1d689581832c7132f40aed611014034c017)) ([b6a8696](https://github.com/plantain-00/eslint-plugin-plantain/commit/b6a8696bc8ad7138affb1577571c2207ec0b83b2)) ([9b8d531](https://github.com/plantain-00/eslint-plugin-plantain/commit/9b8d5313e026da77c9e6729d90112a1d5e26fecd)) ([b807024](https://github.com/plantain-00/eslint-plugin-plantain/commit/b80702425d444b6f48827728842d4ff0ccd92970)) ([aaaa71e](https://github.com/plantain-00/eslint-plugin-plantain/commit/aaaa71e8f7e5fc9af67c5001e1c0addac01f6e94)) ([d51ca36](https://github.com/plantain-00/eslint-plugin-plantain/commit/d51ca36a5f69058237f2b8bce647282c5602f2e0)) ([3a86001](https://github.com/plantain-00/eslint-plugin-plantain/commit/3a8600198d9a9c6de7f8982e3c20ecfd0cd9d36c)) ([b7fbab0](https://github.com/plantain-00/eslint-plugin-plantain/commit/b7fbab03b39d05fa7e3de94b1cb6494ccdf75379)) ([50a9227](https://github.com/plantain-00/eslint-plugin-plantain/commit/50a922748a14d525054aa42001bef9c9d487cc67)) ([5beb4bb](https://github.com/plantain-00/eslint-plugin-plantain/commit/5beb4bb67ea958c13f73707399160310c66d02ad)) ([9713758](https://github.com/plantain-00/eslint-plugin-plantain/commit/9713758094de51d4f2f337e51ef88ebfb2c19901)) ([92feb59](https://github.com/plantain-00/eslint-plugin-plantain/commit/92feb591599eb742ac508cdf35ea9390bf51151d)) ([123f8c4](https://github.com/plantain-00/eslint-plugin-plantain/commit/123f8c4a4a91c81b992b1d16f1cdf8991c8c4037)) ([faf390f](https://github.com/plantain-00/eslint-plugin-plantain/commit/faf390fcbd3019317c3fb41d590f8779975c7578))
+* build: improve release script ([ff6564c](https://github.com/plantain-00/eslint-plugin-plantain/commit/ff6564c76ca3bb5f84ed9bf031cd0dbf671257a4))
+* chore: add changelog ([3a5bd40](https://github.com/plantain-00/eslint-plugin-plantain/commit/3a5bd401a7ff888fe8512484be3aa91e5dafde67))
+* docs: add github ci badge ([52c963f](https://github.com/plantain-00/eslint-plugin-plantain/commit/52c963f6cecec18b8d2a3e5ba975925e894a4d89))
+* chore: remove tsconfig.eslint.json ([8d8e0b1](https://github.com/plantain-00/eslint-plugin-plantain/commit/8d8e0b1099b110cd590189c4c19f7390861b8b09))
+* chore: reuse tsconfig.json ([992d3d6](https://github.com/plantain-00/eslint-plugin-plantain/commit/992d3d6948deaf31bdb87451daae0c6df8d7f5b8))
+* fix: ci failure ([2e846d2](https://github.com/plantain-00/eslint-plugin-plantain/commit/2e846d221f93eb08cd06e9ec46adf219d4c0f929))
+* chore: update dependencies and remove commitlint ([d2daf1c](https://github.com/plantain-00/eslint-plugin-plantain/commit/d2daf1c7df3c7640f774e6909569c8999bd6d169))
+* chore: clean code ([928fefd](https://github.com/plantain-00/eslint-plugin-plantain/commit/928fefddffc30537255e94e4fdc02ccec40bd550))
+
 ## [1.0.0](https://github.com/plantain-00/eslint-plugin-plantain/compare/v0.2.0...v1.0.0) (2020-05-06)
   
 * chore: loose dependencies version ([b2b669a](https://github.com/plantain-00/eslint-plugin-plantain/commit/b2b669a3244ca038bf00d06c47341e5499d77f89))
