@@ -33,7 +33,7 @@
     "rimraf": "3.0.2",
     "ts-node": "8.10.2",
     "tsconfig-plantain": "0.0.1",
-    "type-coverage": "2.9.0"
+    "type-coverage": "2.10.0"
   },
   "typeCoverage": {
     "atLeast": 97.66
@@ -42,7 +42,7 @@
     "@typescript-eslint/experimental-utils": "3"
   },
   "peerDependencies": {
-    "typescript": "3"
+    "typescript": "3 || 4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
