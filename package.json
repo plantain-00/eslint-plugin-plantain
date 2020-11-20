@@ -21,19 +21,19 @@
   },
   "homepage": "https://github.com/plantain-00/eslint-plugin-plantain#readme",
   "devDependencies": {
-    "@types/node": "14.14.7",
-    "@typescript-eslint/eslint-plugin": "4.7.0",
-    "@typescript-eslint/parser": "4.7.0",
+    "@types/node": "14.14.9",
+    "@typescript-eslint/eslint-plugin": "4.8.1",
+    "@typescript-eslint/parser": "4.8.1",
     "clean-release": "2.15.2",
     "clean-scripts": "1.18.7",
     "eslint": "7.13.0",
     "eslint-config-prettier": "6.15.0",
-    "markdownlint-cli": "0.24.0",
+    "markdownlint-cli": "0.25.0",
     "no-unused-export": "1.14.0",
     "rimraf": "3.0.2",
     "ts-node": "9.0.0",
     "tsconfig-plantain": "0.0.1",
-    "type-coverage": "2.14.2"
+    "type-coverage": "2.14.3"
   },
   "typeCoverage": {
     "atLeast": 97.66
