@@ -30,7 +30,6 @@ export default createRule<[], MessageIds>({
     docs: {
       description:
         'Requires any statement that returns a Promise to be await',
-      category: 'Best Practices',
       recommended: false
     },
     messages: {

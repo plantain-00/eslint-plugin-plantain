@@ -9,7 +9,6 @@ export default createRule<[], MessageIds>({
     docs: {
       description:
         'Only import type is allowed',
-      category: 'Best Practices',
       recommended: false
     },
     messages: {
