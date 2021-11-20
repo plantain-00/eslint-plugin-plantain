@@ -1,4 +1,8 @@
-import { createRule } from '../utils'
+import { ESLintUtils } from '@typescript-eslint/experimental-utils'
+
+const createRule = ESLintUtils.RuleCreator(
+  () => `https://github.com/plantain-00/eslint-plugin-plantain#readme`
+)
 
 type MessageIds = 'onlyImportTypeAllowed'
 
